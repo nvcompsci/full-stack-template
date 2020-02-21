@@ -27,19 +27,17 @@ app.get("/items", (req, res) => {
     });
 })
 
-app.post("/save", (req, res) => {
+app.post("/login", (req, res) => {
     const user = req.body.user
     const sql = `INSERT INTO users 
     (firstname, lastname, email, password) 
     VALUES (?, ?, ?, ?)`
     const values = [user.first, user.last, user.email, user.password]
     let userID
-    
     db.run(sql, values, function (err) {
         if (err)
             console.log(err)
-        else {
-            userID = this.lastID
+        else {            
             console.log(`userid ${this.lastID} created`)
         }
     })

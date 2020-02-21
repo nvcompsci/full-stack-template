@@ -38,7 +38,7 @@ function login(event) {
             password: $form.password.value
         }
     }
-    //POST on /save
+    //POST on /login
     const config = {
         method: "POST",
         body: JSON.stringify( order ),
@@ -46,7 +46,7 @@ function login(event) {
             "Content-Type":"application/json"
         }
     }
-    fetch("/save",config)
+    fetch("/login",config)
         .then( response => response.json() )
         .then( response => console.log(response) )
         .catch(err => console.error(err))
